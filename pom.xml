@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.alfresco.transform</groupId>
+  <artifactId>alf-tengine-excel</artifactId>
+  <version>1.0.0</version>
+  <name>Alfresco TEngine Excel - Extract Metadata</name>
+  <packaging>jar</packaging>
+
+  <parent>
+    <groupId>org.alfresco</groupId>
+    <artifactId>alfresco-transform-core</artifactId>
+    <version>5.1.7</version> <!-- Change also this number when upgrading "alfresco.transformer.version" in properties -->
+  </parent>
+
+  <properties>
+    <alfresco.transformer.version>5.1.7</alfresco.transformer.version>
+    <poi.version>5.2.5</poi.version>
+    <json.version>20231013</json.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.alfresco</groupId>
+      <artifactId>alfresco-base-t-engine</artifactId>
+      <version>${alfresco.transformer.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>${poi.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>${json.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>org.alfresco.transform.base.Application</mainClass>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>alfresco-public</id>
+      <name>Alfresco Public</name>
+      <url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
+    </repository>
+  </repositories>
+</project>

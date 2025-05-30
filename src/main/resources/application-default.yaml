@@ -1,0 +1,6 @@
+queue:
+  # Name to be used in ActiveMQ queue when using ATS
+  engineRequestQueue: excel-engine-queue
+transform:
+  core:
+    version: 5.1.7
