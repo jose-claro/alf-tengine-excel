@@ -90,7 +90,7 @@ services:
         -DlocalTransform.excel.url=http://transform-excel:8090/
 
   transform-core-aio:
-    image: alfresco/alfresco-transform-core-aio:5.1.6
+    image: alfresco/alfresco-transform-core-aio:5.1.7
 
   transform-excel:
     image: alfresco-tengine-excel:latest
@@ -104,7 +104,7 @@ Key Configuration Updates:
 
 ---
 
-## Deploying with Alfresco Enterprise 23.x
+## Deploying with Alfresco Enterprise 25.x
 
 Ensure your `compose.yaml` file includes the following configuration:
 
@@ -118,7 +118,7 @@ services:
         -Dsfs.url=http://shared-file-store:8099/
 
   transform-router:
-    image: quay.io/alfresco/alfresco-transform-router:4.1.4
+    image: quay.io/alfresco/alfresco-transform-router:4.1.7
     environment:
       CORE_AIO_URL: "http://transform-core-aio:8090"
       TRANSFORMER_URL_EXCEL: "http://transform-excel:8090"
