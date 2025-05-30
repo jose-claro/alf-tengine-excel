@@ -205,5 +205,3 @@ For major changes, please open an issue first to discuss your proposal.
 ## Support
 
 For issues and feature requests, please open a GitHub issue in this repository.
-
-Happy coding! 🚀
