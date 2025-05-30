@@ -1,6 +1,6 @@
 # Alfresco Metadata Extract Transform Engine for Excel
 
-This project provides a *sample* Metadata Extract Transform Engine for XML, designed to be used with Alfresco Transform Service 3.0.0+.
+This project provides a *sample* Metadata Extract Transform Engine for Excel, designed to be used with Alfresco Transform Service 3.0.0+.
 
 ## Features
 
@@ -142,9 +142,9 @@ Key Configuration Updates:
 
 ---
 
-## Defining an XML Folder Rule in Alfresco Share
+## Defining a Folder Rule for Excel files in Alfresco Share
 
-To automatically extract metadata from XML files uploaded to a specific folder, set up a folder rule in Alfresco Share:
+To automatically extract metadata from Excel files uploaded to a specific folder, set up a folder rule in Alfresco Share:
 
 1. Open [http://localhost:8080/share/](http://localhost:8080/share/) in your browser.
 2. Navigate to the desired folder.
