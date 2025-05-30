@@ -57,6 +57,14 @@ Click the **Transform** button to process the Excel file. The extracted metadata
 }
 ```
 
+### Additional configuration
+
+This Transform Engine includes a set of configuration files located in `src/main/resources` that control its behavior:
+
+* `application-default.yaml`: Defines core service settings, including the name of the ActiveMQ queue (`excel-engine-queue`) used when deployed with Alfresco Transform Service (ATS), and the engine’s compatibility version (`5.1.7`), ensuring correct registration with the ATS infrastructure
+* `excel_engine_config.json`: Describes the media types the engine supports for metadata extraction from Excel documents. It supports various Microsoft Excel formats, including `.xls`, `.xlsb`, `.xlsm`, and `.xlsx`, all transformed to the `alfresco-metadata-extract` format.
+* `ExcelMetadataExtractor_configuration.properties`: Document-specific extraction rules. In this configuration, it targets a worksheet named `"Sample Template"` and uses `"Invoice No"` as an anchor header to locate metadata in the Excel file.
+
 ---
 
 ## Building the Docker Image
