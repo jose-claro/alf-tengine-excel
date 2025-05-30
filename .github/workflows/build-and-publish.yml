@@ -1,0 +1,47 @@
+name: Build Java App, Dockerize, and Push to ECR
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    env:
+      ECR_IMAGE_URI: ${{ secrets.AWS_ECR_IMAGE_URI }} # the image URI in ECR, e.g., 123456789012.dkr.ecr.us-west-2.amazonaws.com/my-java-app:latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v4
+      with:
+        maven-version: '3.8.5'
+
+    - name: Build Java application
+      run: mvn clean package
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      uses: aws-actions/amazon-ecr-login@v2
+
+    - name: Build Docker image
+      run: |
+        docker build -t $ECR_IMAGE_URI .
+
+    - name: Push Docker image to ECR
+      run: |
+        docker push $ECR_IMAGE_URI
