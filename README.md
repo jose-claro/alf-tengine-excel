@@ -73,9 +73,25 @@ This Transform Engine includes a set of configuration files located in `src/main
 
 - **Docker** 4.30+
 
-### Building the Image
+## Building the Image
 
-From the project root directory, build the Docker image with:
+### With the GitHub action `build-and-push-to-ECR.yml`
+
+This project includes a GitHub Action workflow (`build-and-push-to-ECR.yml`) that automatically builds and pushes the Docker image to AWS ECR (Elastic Container Registry).
+
+To use it:
+- create the repository in ECR (Elastic Container Registry) if it does not exist.
+- fork the repository to your GitHub account.
+- set up the necessary secrets in your repository settings:
+  - `AWS_ECR_IMAGE_URI`: for example, 123456789012.dkr.ecr.us-east-1.amazonaws.com/your-image-name:tag
+  - `AWS_ACCESS_KEY_ID`: your AWS access key ID
+  - `AWS_SECRET_ACCESS_KEY`: your AWS secret access key
+  - `AWS_REGION`: for example, us-east-1
+  - Manually run this workflow in the GitHub Actions tab.
+
+### Manually
+
+Run the following command:
 
 ```bash
 docker build . -t alfresco-tengine-excel
@@ -84,6 +100,7 @@ docker build . -t alfresco-tengine-excel
 This will create a Docker image named `alfresco-tengine-excel:latest` in your local Docker repository.
 
 ---
+
 
 ## Deploying with Alfresco Community 25.x
 
